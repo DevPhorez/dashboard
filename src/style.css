@@ -1,0 +1,38 @@
+::selection {
+    color: #fff;
+    background: #d099c5;
+}
+
+.text-success {
+    color: #51bfa0 !important;
+}
+
+.text-primary {
+    color: #d099c5 !important;
+}
+
+.text-900 {
+    color: #4f5665 !important;
+}
+
+.text-justify {
+    text-align: justify !important;
+}
+
+.rounded-right {
+    border-top-right-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+}
+
+.rounded-left {
+    border-top-left-radius: 12px !important;
+    border-bottom-left-radius: 12px !important;
+}
+
+.group-button:not(.active) {
+    color: #8d8d8d !important;
+}
+
+.active {
+    background-color: rgba(81, 191, 160, 0.2) !important;
+}
