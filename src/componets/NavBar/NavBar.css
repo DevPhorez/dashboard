@@ -1,0 +1,8 @@
+.nav-item-ph {
+    cursor: pointer;
+    transition: .2s;
+}
+.nav-item-ph:hover, .nav-active {
+    border-radius: 10px !important;
+    background-color: rgba(208, 153, 197, 0.2) !important;
+}
