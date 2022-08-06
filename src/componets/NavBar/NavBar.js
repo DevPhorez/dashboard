@@ -67,7 +67,6 @@ function NavBar () {
 									{
 										item.items.map( item => (
 											<MenuItem key={item.title} className={`nav-item-ph p-1 mb-1 ${ item.isActive && 'nav-active' }`} onClick={ () => ChangeNavActive(item.title) }>
-												{/*<span className='me-2'>{ item.icon }</span> { item.title }*/}
 												<ListItemIcon>
 													{ item.icon }
 												</ListItemIcon>
@@ -82,7 +81,7 @@ function NavBar () {
 				</Container>
 			</Col>
 			<Col lg={9}>
-				<h1>hello</h1>
+			
 			</Col>
 		</Row>
 	)
