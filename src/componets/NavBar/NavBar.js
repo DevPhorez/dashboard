@@ -2,10 +2,10 @@ import './NavBar.css'
 
 import { useState } from "react";
 
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
 import { MenuList, MenuItem, ListItemIcon, ListItemText } from '@mui/material'
-import { Home, Timeline, TrendingUp, PeopleOutline, PersonAddAlt, StorefrontOutlined, AttachMoneyOutlined, ReportProblemOutlined, EmailOutlined, DynamicFeedOutlined, MessageOutlined } from '@mui/icons-material'
+import { Home as HomeIcon, Timeline, TrendingUp, PeopleOutline, PersonAddAlt, StorefrontOutlined, AttachMoneyOutlined, ReportProblemOutlined, EmailOutlined, DynamicFeedOutlined, MessageOutlined } from '@mui/icons-material'
 
 
 function NavBar () {
@@ -14,7 +14,7 @@ function NavBar () {
 		{
 			category: 'Dashboard',
 			items: [
-				{ title: 'Home', icon: <Home />, isActive: true },
+				{ title: 'Home', icon: <HomeIcon />, isActive: true },
 				{ title: 'Analytics', icon: <Timeline />, isActive: false },
 				{ title: 'Sales', icon: <TrendingUp />, isActive: false },
 			]
@@ -54,10 +54,9 @@ function NavBar () {
 		})
 		setNavbarItems(newNavbar)
 	}
-
 	return (
-		<Row style={ { maxWidth: '100%' } } >
-			<Col lg={3}>
+		<>
+			<div className='position-fixed d-flex justify-content-start float-start bg-white pt-3 pe-3' style={ { maxWidth: 212.828, width: 212.828, zIndex: 99 } } >
 				<Container fluid className='ms-2'>
 					{
 						navbarItems.map( item => (
@@ -79,11 +78,8 @@ function NavBar () {
 						))
 					}
 				</Container>
-			</Col>
-			<Col lg={9}>
-			
-			</Col>
-		</Row>
+			</div>
+		</>
 	)
 }
 

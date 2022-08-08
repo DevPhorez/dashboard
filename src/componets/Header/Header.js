@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { IconButton } from '@mui/material'
 import { Language } from '@mui/icons-material';
 
@@ -8,8 +10,9 @@ import Setting from "./Setting/Setting";
 import Notification from "./Norification/Notification";
 
 function Header () {
+	
 	return (
-		<Navbar>
+		<Navbar className='shadow' bg='white' sticky={'top'}>
 			<Container fluid className='mx-2 d-flex align-items-center'>
 				<Navbar.Brand className='text-success fs-4 fw-bold'>PHOREZ DASHBOARD</Navbar.Brand>
 				<Navbar.Collapse>
