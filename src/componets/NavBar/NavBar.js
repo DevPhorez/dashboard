@@ -4,12 +4,14 @@ import { useState } from "react";
 
 import { Container } from "react-bootstrap";
 
-import { MenuList, MenuItem, ListItemIcon, ListItemText } from '@mui/material'
+import { MenuList, MenuItem, ListItemIcon, ListItemText, Fab } from '@mui/material'
 import { Home as HomeIcon, Timeline, TrendingUp, PeopleOutline, PersonAddAlt, StorefrontOutlined, AttachMoneyOutlined, ReportProblemOutlined, EmailOutlined, DynamicFeedOutlined, MessageOutlined } from '@mui/icons-material'
 
+import LGNavBar from './LG NavBar/LGNavBar';
+import MDNavBar from './MD NavBar/MDNavBar';
 
 function NavBar () {
-
+	
 	const [navbarItems, setNavbarItems] = useState([
 		{
 			category: 'Dashboard',
@@ -38,7 +40,7 @@ function NavBar () {
 			]
 		},
 	])
-
+	
 	function ChangeNavActive (newActive) {
 		let newNavbar = []
 		navbarItems.forEach( category => {
@@ -54,31 +56,11 @@ function NavBar () {
 		})
 		setNavbarItems(newNavbar)
 	}
+	
 	return (
 		<>
-			<div className='position-fixed d-flex justify-content-start float-start bg-white pt-3 pe-3' style={ { maxWidth: 212.828, width: 212.828, zIndex: 99 } } >
-				<Container fluid className='ms-2'>
-					{
-						navbarItems.map( item => (
-							<div key={item.category}>
-								<p className='text-black-50 opacity-75 mb-1' style={ { fontSize: 14, fontWeight: 900, letterSpacing: 1 } }>{ item.category }</p>
-								<MenuList>
-									{
-										item.items.map( item => (
-											<MenuItem key={item.title} className={`nav-item-ph p-1 mb-1 ${ item.isActive && 'nav-active' }`} onClick={ () => ChangeNavActive(item.title) }>
-												<ListItemIcon>
-													{ item.icon }
-												</ListItemIcon>
-												<ListItemText>{ item.title }</ListItemText>
-											</MenuItem>
-										) )
-									}
-								</MenuList>
-							</div>
-						))
-					}
-				</Container>
-			</div>
+			<LGNavBar navbarItems={navbarItems} setNavbarItems={setNavbarItems} onChange={ChangeNavActive} />
+			<MDNavBar navbarItems={navbarItems} setNavbarItems={setNavbarItems} onChange={ChangeNavActive} />
 		</>
 	)
 }
