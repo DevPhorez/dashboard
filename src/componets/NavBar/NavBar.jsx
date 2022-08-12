@@ -16,27 +16,27 @@ function NavBar () {
 		{
 			category: 'Dashboard',
 			items: [
-				{ title: 'Home', icon: <HomeIcon />, isActive: true },
+				{ title: 'Home', icon: <HomeIcon />, link: '/', isActive: true },
 				{ title: 'Analytics', icon: <Timeline />, isActive: false },
-				{ title: 'Sales', icon: <TrendingUp />, isActive: false },
+				{ title: 'Sales', icon: <TrendingUp />, link: '/sales', isActive: false },
 			]
 		},
 		{
 			category: 'Quick Menu',
 			items: [
-				{ title: 'Users', icon: <PeopleOutline />, isActive: false },
-				{ title: 'New User', icon: <PersonAddAlt />, isActive: false },
-				{ title: 'Products', icon: <StorefrontOutlined />, isActive: false },
-				{ title: 'Transactions', icon: <AttachMoneyOutlined />, isActive: false },
+				{ title: 'Users', icon: <PeopleOutline />, link: '/users', isActive: false },
+				{ title: 'New User', icon: <PersonAddAlt />, link: '/new-users', isActive: false },
+				{ title: 'Products', icon: <StorefrontOutlined />, link: '/products', isActive: false },
+				{ title: 'Transactions', icon: <AttachMoneyOutlined />, link: '/transactions', isActive: false },
 				{ title: 'Reports', icon: <ReportProblemOutlined />, isActive: false },
 			]
 		},
 		{
 			category: 'Notifications',
 			items: [
-				{ title: 'Mail', icon: <EmailOutlined />, isActive: false },
-				{ title: 'Feedback', icon: <DynamicFeedOutlined />, isActive: false },
-				{ title: 'Messages', icon: <MessageOutlined />, isActive: false },
+				{ title: 'Mail', icon: <EmailOutlined />, link: '/mails', isActive: false },
+				{ title: 'Feedback', icon: <DynamicFeedOutlined />, link: '/feedbacks', isActive: false },
+				{ title: 'Messages', icon: <MessageOutlined />, link: '/messages', isActive: false },
 			]
 		},
 	])

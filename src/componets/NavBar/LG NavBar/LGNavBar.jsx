@@ -2,6 +2,8 @@ import { Container } from "react-bootstrap";
 
 import { MenuList, MenuItem, ListItemIcon, ListItemText } from '@mui/material'
 
+import { Link } from 'react-router-dom'
+
 function LGNavBar (props) {
 	
 	return (
@@ -14,12 +16,14 @@ function LGNavBar (props) {
 							<MenuList>
 								{
 									item.items.map( item => (
-										<MenuItem key={item.title} className={`nav-item-ph p-1 mb-1 ${ item.isActive && 'nav-active' }`} onClick={ () => props.onChange(item.title) }>
-											<ListItemIcon>
-												{ item.icon }
-											</ListItemIcon>
-											<ListItemText>{ item.title }</ListItemText>
-										</MenuItem>
+										<Link key={item.title} className='text-decoration-none text-900' to={`${item.link}`}>
+											<MenuItem className={`nav-item-ph p-1 mb-1 ${ item.isActive && 'nav-active' }`} onClick={ () => props.onChange(item.title) }>
+												<ListItemIcon>
+													{ item.icon }
+												</ListItemIcon>
+												<ListItemText>{ item.title }</ListItemText>
+											</MenuItem>
+										</Link>
 									) )
 								}
 							</MenuList>

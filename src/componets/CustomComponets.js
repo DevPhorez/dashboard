@@ -9,11 +9,20 @@ const SuccessOutlineButton = styled(Button)(() => ({
 	},
 }));
 
+const SuccessContainedButton = styled(Button)(() => ({
+	backgroundColor: '#51bfa0',
+	color: '#fff',
+	'&:hover': {
+		backgroundColor: 'rgba(81,191,160,0.8)',
+	}
+}));
+
 const PrimaryContainedButton = styled(Button)(() => ({
 	backgroundColor: '#d099c5',
+	color: '#fff',
 	'&:hover': {
 		backgroundColor: 'rgba(208,153,197,0.8)',
 	}
 }));
 
-export { SuccessOutlineButton, PrimaryContainedButton }
+export { SuccessOutlineButton, PrimaryContainedButton, SuccessContainedButton }

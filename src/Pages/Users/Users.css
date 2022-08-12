@@ -1,0 +1,10 @@
+.userListUser {
+    text-decoration: none !important;
+    color: rgba(0, 0, 0, 0.87);
+}
+.userListUser img {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 100% !important;
+    margin-right: 8px;
+}
