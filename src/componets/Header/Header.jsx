@@ -12,25 +12,28 @@ import Notification from "./Norification/Notification";
 function Header () {
 	
 	return (
-		<Navbar className='shadow' bg='white' sticky={'top'}>
-			<Container fluid className='mx-2 d-flex align-items-center'>
-				<Navbar.Brand className='text-success fs-4 fw-bold'>PHOREZ DASHBOARD</Navbar.Brand>
-				<Navbar.Collapse>
-					<Nav className="position-absolute end-0">
-						<Notification />
-						<Nav.Link>
-							<IconButton>
-								<Language className='text-primary' />
-							</IconButton>
-						</Nav.Link>
-						<Setting />
-						<Nav.Link className='pe-0'>
-							<ProfileMini id={'profile'} />
-						</Nav.Link>
-					</Nav>
-				</Navbar.Collapse>
-			</Container>
-		</Navbar>
+		<>
+			<div style={ { width: '100%', height: '46px', padding: '8px 0', marginBottom: 16 } }></div>
+			<Navbar className='shadow' bg='white' fixed={'top'}>
+				<Container fluid className='mx-2 d-flex align-items-center'>
+					<Navbar.Brand className='text-success fs-4 fw-bold'>PHOREZ DASHBOARD</Navbar.Brand>
+					<Navbar.Collapse>
+						<Nav className="position-absolute end-0">
+							<Notification />
+							<Nav.Link>
+								<IconButton>
+									<Language className='text-primary' />
+								</IconButton>
+							</Nav.Link>
+							<Setting />
+							<Nav.Link className='pe-0'>
+								<ProfileMini id={'profile'} />
+							</Nav.Link>
+						</Nav>
+					</Navbar.Collapse>
+				</Container>
+			</Navbar>
+		</>
 	)
 }
 
