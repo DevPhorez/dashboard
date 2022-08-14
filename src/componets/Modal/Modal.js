@@ -25,7 +25,7 @@ function Modal (props) {
 		props.setOpen(false);
 	};
 	
-	const DeleteUser = () => props.onDelete()
+	const Delete = () => props.onDelete()
 	
 	return (
 		<div>
@@ -48,8 +48,8 @@ function Modal (props) {
 						<PrimaryContainedButton onClick={ props.onHide } className='me-3'>
 							{ props.cancel }
 						</PrimaryContainedButton>
-						<SuccessContainedButton onClick={DeleteUser} >
-							{ props.ok}
+						<SuccessContainedButton onClick={Delete} >
+							{ props.ok }
 						</SuccessContainedButton>
 					</Box>
 				</muiModal>

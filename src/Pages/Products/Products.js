@@ -4,25 +4,25 @@ import { DataGrid } from '@mui/x-data-grid';
 import { Link } from 'react-router-dom'
 
 import { IconButton } from '@mui/material'
-import { Delete, Edit } from '@mui/icons-material'
+import { Delete, Visibility } from '@mui/icons-material'
 
-import { userRows } from '../../data'
+import { products } from '../../data'
 
 import Modal from '../../componets/Modal/Modal'
 
-function Users () {
+function Products () {
 	
-	const [userData, setUserData] = useState(userRows)
+	const [productData, setProductData] = useState(products)
 	const [openModal, setOpenModal] = useState(false);
-	const [deleteUserID, setDeleteUserID] = useState(null)
+	const [deleteProductID, setDeleteProductID] = useState(null)
 	
-	const handleToggle = (userID) => {
-		setDeleteUserID(userID)
+	const handleToggle = (productID) => {
+		setDeleteProductID(productID)
 		setOpenModal(!openModal);
 	};
 	
-	const DeleteUser = () => {
-		setUserData(userData.filter( user => user.id !== deleteUserID))
+	const DeleteProduct = () => {
+		setProductData(productData.filter( product => product.id !== deleteProductID))
 	}
 	
 	const columns = [
@@ -32,15 +32,15 @@ function Users () {
 			width: 90
 		},
 		{
-			field: 'user',
-			headerName: 'User',
+			field: 'product',
+			headerName: 'Product',
 			width: 200,
 			renderCell: (params) => {
 				return (
-					<Link to="/" className="text-decoration-none">
+					<Link to={`/product/${params.row.id}`} className="text-decoration-none">
 						<div className='tableList'>
-							<img src={params.row.avatar} alt='hello' />
-							{params.row.username}
+							<img src={params.row.image} alt={params.row.title} />
+							{params.row.title}
 						</div>
 					</Link>
 				)
@@ -68,15 +68,15 @@ function Users () {
 			renderCell: (params) => {
 				return (
 					<>
-						<Link to={`/user/${params.row.id}`} className="link">
-							<IconButton color={'success'}>
-								<Edit color={'success'} />
+						<Link to={`/product/${params.row.id}`} className="link">
+							<IconButton color={'secondary'}>
+								<Visibility />
 							</IconButton>
 						</Link>
 						<IconButton color={'error'}>
 							<Delete
 								color={'error'}
-								className="userListDelete"
+								className="productListDelete"
 								onClick={ () => handleToggle(params.row.id) }
 							/>
 						</IconButton>
@@ -91,17 +91,17 @@ function Users () {
 	return (
 		<div className='float-end mt-5 ps-3 pe-4' style={ { height: 400, width: screenWidth >= 768 ? screenWidth - 212.828 : '100%' } }>
 			<DataGrid
-				rows={userData}
+				rows={productData}
 				columns={columns}
 				pageSize={5}
 				rowsPerPageOptions={[5]}
 				checkboxSelection
 			/>
-			<Modal cancel={'No don\'t Delete'} ok={'Yes Delete'} onDelete={DeleteUser} open={openModal} setOpen={setOpenModal} setUserID={setDeleteUserID}>
-				Are you sure you want to delete this user for ever???
+			<Modal cancel={'No don\'t Delete'} ok={'Yes Delete'} onDelete={DeleteProduct} open={openModal} setOpen={setOpenModal} setProductID={setDeleteProductID}>
+				Are you sure you want to delete this product for ever???
 			</Modal>
 		</div>
 	);
 }
 
-export default Users
+export default Products

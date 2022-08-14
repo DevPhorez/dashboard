@@ -120,4 +120,34 @@ const defaultAvatars = [
 	{ id: 5, src: '5.jpg' },
 ]
 
-export { userRows, defaultAvatars }
+const products = [
+	{
+		id: 1,
+		title: 'MIS Monitor',
+		brand: 'MIS',
+		price: 233,
+		colors: ['red', 'yellow', 'black', 'white'],
+		description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequuntur debitis dicta distinctio ea et ex ipsa iste laborum minima, nesciunt, nihil officia perferendis, quo sit tempora tempore tenetur ullam?',
+		image: 'Images/Products/MIS Monitor.jpg',
+	},
+	{
+		id: 2,
+		title: 'Samsung Monitor',
+		brand: 'Samsung',
+		price: 233,
+		colors: ['red', 'yellow', 'black', 'white'],
+		description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequuntur debitis dicta distinctio ea et ex ipsa iste laborum minima, nesciunt, nihil officia perferendis, quo sit tempora tempore tenetur ullam?',
+		image: 'Images/Products/Samsung Monitor.jpg',
+	},
+	{
+		id: 3,
+		title: 'Xiaomi Monitor',
+		brand: 'Xiaomi',
+		price: 233,
+		colors: ['red', 'yellow', 'black', 'white'],
+		description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequuntur debitis dicta distinctio ea et ex ipsa iste laborum minima, nesciunt, nihil officia perferendis, quo sit tempora tempore tenetur ullam?',
+		image: 'Images/Products/Xiaomi Monitor.jpeg',
+	},
+]
+
+export { userRows, defaultAvatars, products }
