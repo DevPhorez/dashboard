@@ -27,7 +27,7 @@ function Header () {
 							</Nav.Link>
 							<Setting />
 							<Nav.Link className='pe-0'>
-								<ProfileMini id={'profile'} />
+								<ProfileMini id={6} />
 							</Nav.Link>
 						</Nav>
 					</Navbar.Collapse>

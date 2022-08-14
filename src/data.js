@@ -61,6 +61,7 @@ let userRows = [
 		status: 'active',
 		transaction: '$129.52',
 		email: 'dev.phorez@gmail.com',
+		aboutMe: 'Lorem ipsum my dolor is sit and amet, about consectetur yes adipisicing bro elit. Alias is consequatur and eius eveniet magni me omnis to quibusdam quisquam?',
 		phid: function () {
 			return `ph-${this.id}/${this.username[0].toUpperCase()}`
 		}

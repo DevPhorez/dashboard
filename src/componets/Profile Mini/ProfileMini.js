@@ -1,35 +1,26 @@
 import { useState } from "react";
 
 import { SuccessOutlineButton } from "../CustomComponets"
-import {
-	ListItemAvatar,
-	Avatar,
-	Popover,
-	IconButton,
-	Badge,
-	List,
-	ListItem,
-	ListItemText,
-	Typography, Divider
-} from "@mui/material";
+import {ListItemAvatar, Avatar, Popover } from "@mui/material";
 import {Container, Nav} from "react-bootstrap";
 import PopupState, {bindPopover, bindTrigger} from "material-ui-popup-state";
-import {Notifications} from "@mui/icons-material";
+
+import { userRows as users } from '../../data'
+
+import { Link } from 'react-router-dom'
 
 function ProfileMini (props) {
 	
-	const [adminInfo] = useState({
-		id: 1,
-		fullName: 'phorez',
-		aboutMe: 'Lorem ipsum my dolor is sit and amet, about consectetur yes adipisicing bro elit. Alias is consequatur and eius eveniet magni me omnis to quibusdam quisquam?'
-	})
+	const [adminInfo] = useState(users.find( user => user.id === props.id ))
+	
+	console.log(adminInfo)
 	
 	return (
 		<PopupState variant="popover" popupId="demo-popup-popover">
 			{(popupState) => (
 				<>
 					<ListItemAvatar { ...bindTrigger(popupState) }>
-						<Avatar src='Images/profile.jfif'></Avatar>
+						<Avatar src={`/` + 	adminInfo.avatar}></Avatar>
 					</ListItemAvatar>
 					
 					<Popover
@@ -45,7 +36,7 @@ function ProfileMini (props) {
 					>
 						<Container>
 							<ListItemAvatar className='d-flex justify-content-center' style={ { maxWidth: 300, width: 300 } }>
-								<Avatar className='my-3' style={ { width: 100, height: 100 } } src='Images/profile.jfif'></Avatar>
+								<Avatar className='my-3' style={ { width: 100, height: 100 } } src={`/` + 	adminInfo.avatar}></Avatar>
 							</ListItemAvatar>
 							<h3 className='text-center text-success'>
 								{ adminInfo.fullName }
@@ -59,9 +50,11 @@ function ProfileMini (props) {
 									{ adminInfo.aboutMe }
 								</p>
 							</div>
-							<div className='d-grid mb-3'>
-								<SuccessOutlineButton variant="outlined">See more and Edit</SuccessOutlineButton>
-							</div>
+							<Link className='text-decoration-none' to={`users/${adminInfo.id}`}>
+								<div className='d-grid mb-3'>
+									<SuccessOutlineButton variant="outlined">See more and Edit</SuccessOutlineButton>
+								</div>
+							</Link>
 						</Container>
 					</Popover>
 				</>
