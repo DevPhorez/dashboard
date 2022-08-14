@@ -36,3 +36,21 @@
 .active {
     background-color: rgba(81, 191, 160, 0.2) !important;
 }
+
+.profile {
+    width: 150px !important;
+    height: 150px !important;
+    border-radius: 10px !important;
+    border: 1px solid #51bfa0 !important;
+    cursor: pointer !important;
+}
+
+.profile-half-circle {
+    width: 75px;
+    height: 75px;
+    background-color: #fff0f1;
+    border-top-left-radius: 110px;
+    border: 0;
+    position: absolute;
+    transition: .3s;
+}
