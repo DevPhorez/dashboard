@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 function LGNavBar (props) {
 	
 	return (
-		<div className='position-fixed d-lg-flex d-none justify-content-start float-start bg-white pt-3 pe-3' style={ { maxWidth: 212.828, width: 212.828, zIndex: 99 } } >
+		<div className='position-sticky d-lg-flex d-none justify-content-start float-start bg-white pt-3' style={ { maxWidth: 212.828, width: 212.828, zIndex: 99 } } >
 			<Container fluid className='ms-2'>
 				{
 					props.navbarItems.map( item => (

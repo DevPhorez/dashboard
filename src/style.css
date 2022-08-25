@@ -3,6 +3,11 @@
     background: #d099c5;
 }
 
+a:hover {
+    color: unset;
+    text-decoration-color: unset;
+}
+
 .text-success {
     color: #51bfa0 !important;
 }
@@ -64,4 +69,16 @@
     height: 40px !important;
     border-radius: 100% !important;
     margin-right: 8px;
+}
+
+.border-200 {
+    border: 1px solid #e0e0e0;
+}
+
+.mt-half-5 {
+    margin-top: 2.5rem;
+}
+
+.pointer {
+    cursor: pointer;
 }

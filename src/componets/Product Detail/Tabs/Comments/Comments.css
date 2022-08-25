@@ -1,0 +1,23 @@
+.box {
+    width: 100%;
+    margin: 1rem 6px;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.bg-rating-1 {
+    background-color: #f9bc00 !important;
+}
+
+.bg-rating-2 {
+    background-color: #b1b64d !important;
+}
+
+.bg-rating-3 {
+    background-color: #65aa57 !important;
+}
+
+.bg-rating-4, .bg-rating-5 {
+    background-color: #00a049 !important;
+}

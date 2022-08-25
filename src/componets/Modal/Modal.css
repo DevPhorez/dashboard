@@ -2,3 +2,7 @@
     background-color: rgba(79, 38, 72, 0.5) !important;
     backdrop-filter: blur(4px);
 }
+
+.MuiBackdrop-root {
+    background-color: transparent !important;
+}

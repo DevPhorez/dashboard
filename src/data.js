@@ -129,6 +129,35 @@ const products = [
 		colors: ['red', 'yellow', 'black', 'white'],
 		description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequuntur debitis dicta distinctio ea et ex ipsa iste laborum minima, nesciunt, nihil officia perferendis, quo sit tempora tempore tenetur ullam?',
 		image: 'Images/Products/MIS Monitor.jpg',
+		features: [
+			{ id: 1, title: 'Panel type', value: 'IPS' },
+			{ id: 2, title: 'Backlight', value: 'LED' },
+			{ id: 3, title: 'Monitor type', value: 'Programming' },
+		],
+		comments: [
+			{
+				id: 1,
+				rate: 3,
+				ownerID: 1,
+				title: 'Good',
+				positivePoints: [],
+				negativePoints: [],
+				description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequuntur debitis dicta distinctio ea et ex ipsa iste laborum minima, nesciunt, nihil officia perferendis, quo sit tempora tempore tenetur ullam?',
+				isAnonymous: false,
+				date: '2022 / 10 / 8',
+			},
+			{
+				id: 2,
+				rate: 5,
+				ownerID: 1,
+				title: 'Good',
+				positivePoints: [],
+				negativePoints: [],
+				description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequuntur debitis dicta distinctio ea et ex ipsa iste laborum minima, nesciunt, nihil officia perferendis, quo sit tempora tempore tenetur ullam?',
+				isAnonymous: false,
+				date: '2022 / 10 / 8',
+			},
+		]
 	},
 	{
 		id: 2,
@@ -138,6 +167,11 @@ const products = [
 		colors: ['red', 'yellow', 'black', 'white'],
 		description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequuntur debitis dicta distinctio ea et ex ipsa iste laborum minima, nesciunt, nihil officia perferendis, quo sit tempora tempore tenetur ullam?',
 		image: 'Images/Products/Samsung Monitor.jpg',
+		features: [
+			{ id: 1, title: 'Panel type', value: 'SPA' },
+			{ id: 2, title: 'Backlight', value: 'LCD' },
+			{ id: 3, title: 'Monitor type', value: 'Photography' },
+		]
 	},
 	{
 		id: 3,
@@ -147,6 +181,11 @@ const products = [
 		colors: ['red', 'yellow', 'black', 'white'],
 		description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequuntur debitis dicta distinctio ea et ex ipsa iste laborum minima, nesciunt, nihil officia perferendis, quo sit tempora tempore tenetur ullam?',
 		image: 'Images/Products/Xiaomi Monitor.jpeg',
+		features: [
+			{ id: 1, title: 'Panel type', value: 'IPS' },
+			{ id: 2, title: 'Backlight', value: 'LED' },
+			{ id: 3, title: 'Monitor type', value: 'Programming' },
+		]
 	},
 ]
 

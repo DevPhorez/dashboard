@@ -37,7 +37,7 @@ function Products () {
 			width: 200,
 			renderCell: (params) => {
 				return (
-					<Link to={`/product/${params.row.id}`} className="text-decoration-none">
+					<Link to={`/product/${params.row.id}/${params.row.title.replace(' ', '+')}`} className="text-decoration-none">
 						<div className='tableList'>
 							<img src={params.row.image} alt={params.row.title} />
 							{params.row.title}
@@ -68,7 +68,7 @@ function Products () {
 			renderCell: (params) => {
 				return (
 					<>
-						<Link to={`/product/${params.row.id}`} className="link">
+						<Link to={`/product/${params.row.id}/${params.row.title.replace(' ', '+')}`} className="link">
 							<IconButton color={'secondary'}>
 								<Visibility />
 							</IconButton>

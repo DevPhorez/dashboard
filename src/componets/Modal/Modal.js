@@ -58,4 +58,5 @@ function Modal (props) {
 	);
 }
 
+export { style }
 export default Modal

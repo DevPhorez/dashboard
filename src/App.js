@@ -25,8 +25,10 @@ function App() {
 	return (
 		<ThemeProvider theme={theme}>
 			<Header />
-			<NavBar />
-			{ router }
+			<div className='d-flex'>
+				<NavBar />
+				{ router }
+			</div>
 		</ThemeProvider>
 	);
 }
