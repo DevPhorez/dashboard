@@ -41,13 +41,13 @@ function a11yProps(index: number) {
 	};
 }
 
-export default function BasicTabs() {
+function Sections (props) {
 	const [value, setValue] = React.useState(0);
-	
+
 	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
 		setValue(newValue);
 	};
-	
+
 	return (
 		<Box className='mt-5' sx={{ width: '100%' }}>
 			<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -59,77 +59,14 @@ export default function BasicTabs() {
 				</Tabs>
 			</Box>
 			<TabPanel value={value} index={0}>
-				<Introduced introduced='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, eveniet, quos? Aut deserunt dicta, eaque eius illo impedit nulla. Eligendi libero, quos! At consequatur earum eligendi magnam veritatis. Dolores, temporibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, eveniet, quos? Aut deserunt dicta, eaque eius illo impedit nulla. Eligendi libero, quos! At consequatur earum eligendi magnam veritatis. Dolores, temporibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, eveniet, quos? Aut deserunt dicta, eaque eius illo impedit nulla. Eligendi libero, quos! At consequatur earum eligendi magnam veritatis. Dolores, temporibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, eveniet, quos? Aut deserunt dicta, eaque eius illo impedit nulla. Eligendi libero, quos! At consequatur earum eligendi magnam veritatis. Dolores, temporibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, eveniet, quos? Aut deserunt dicta, eaque eius illo impedit nulla. Eligendi libero, quos! At consequatur earum eligendi magnam veritatis. Dolores, temporibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, eveniet, quos? Aut deserunt dicta, eaque eius illo impedit nulla. Eligendi libero, quos! At consequatur earum eligendi magnam veritatis. Dolores, temporibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, eveniet, quos? Aut deserunt dicta, eaque eius illo impedit nulla. Eligendi libero, quos! At consequatur earum eligendi magnam veritatis. Dolores, temporibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, eveniet, quos? Aut deserunt dicta, eaque eius illo impedit nulla. Eligendi libero, quos! At consequatur earum eligendi magnam veritatis. Dolores, temporibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, eveniet, quos? Aut deserunt dicta, eaque eius illo impedit nulla. Eligendi libero, quos! At consequatur earum eligendi magnam veritatis. Dolores, temporibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, eveniet, quos? Aut deserunt dicta, eaque eius illo impedit nulla. Eligendi libero, quos! At consequatur earum eligendi magnam veritatis. Dolores, temporibus.' />
+				<Introduced introduced={ props.product.description } />
 			</TabPanel>
 			<TabPanel value={value} index={1}>
 				<Specifications
-					specifications={ [
-						{ title: 'Size', value: '27 CH' },
-						{ title: 'Weight', value: '500 MG' },
-						{ title: 'Monitor type', value: 'LED' },
-					] } />
+					specifications={ props.product.features } />
 			</TabPanel>
 			<TabPanel value={value} index={2}>
-				<Comments product={ {
-					title: 'MIS Monitor',
-					comments: [
-						{
-							id: 1,
-							rate: 3,
-							owner: 'Phorez',
-							title: 'Good',
-							positivePoints: [],
-							negativePoints: [],
-							description: 'Lorem ipsum dolor sit amet, consectetur adipis',
-							isAnonymous: false,
-							date: '2022 / 10 / 8',
-						},
-						{
-							id: 2,
-							rate: 5,
-							owner: 'Phorez B',
-							title: 'Good',
-							positivePoints: [],
-							negativePoints: [],
-							description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequuntur debitis dicta distinctio ea et ex ipsa iste laborum minima, nesciunt, nihil officia perferendis, quo sit tempora tempore tenetur ullam?',
-							isAnonymous: false,
-							date: '2022 / 10 / 8',
-						},
-						{
-							id: 3,
-							rate: 1,
-							owner: 'Phorez B',
-							title: 'Good',
-							positivePoints: [],
-							negativePoints: [],
-							description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequuntur debitis dicta distinctio ea et ex ipsa iste laborum minima, nesciunt, nihil officia perferendis, quo sit tempora tempore tenetur ullam?',
-							isAnonymous: false,
-							date: '2022 / 10 / 8',
-						},
-						{
-							id: 4,
-							rate: 2,
-							owner: 'Phorez B',
-							title: 'Good',
-							positivePoints: [],
-							negativePoints: [],
-							description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequuntur debitis dicta distinctio ea et ex ipsa iste laborum minima, nesciunt, nihil officia perferendis, quo sit tempora tempore tenetur ullam?',
-							isAnonymous: false,
-							date: '2022 / 10 / 8',
-						},
-						{
-							id: 5,
-							rate: 4,
-							owner: 'Phorez B',
-							title: 'Good',
-							positivePoints: [],
-							negativePoints: [],
-							description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequuntur debitis dicta distinctio ea et ex ipsa iste laborum minima, nesciunt, nihil officia perferendis, quo sit tempora tempore tenetur ullam?',
-							isAnonymous: false,
-							date: '2022 / 10 / 8',
-						},
-					],
-				} } />
+				<Comments product={ props.product } />
 			</TabPanel>
 			<TabPanel value={value} index={3}>
 				Item four
@@ -137,3 +74,5 @@ export default function BasicTabs() {
 		</Box>
 	);
 }
+
+export default Sections

@@ -32,12 +32,31 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 import Options from '../../componets/Our Options/Options';
 
+import Image from '../../componets/Product Detail/Image/Image'
 import Features from '../../componets/Product Detail/Features/Features'
 import Colors from '../../componets/Product Detail/Colors/Colors'
-import Size from '../../componets/Product Detail/Size/Size';
-import Tabs from '../../componets/Product Detail/Tabs/Tabs';
+import Size from '../../componets/Product Detail/Size/Size'
+import Tabs from '../../componets/Product Detail/Tabs/Tabs'
 
 import { products } from '../../data'
+
+function RateSum (comments) {
+	if (comments.length === 0) {
+		return 5
+	} else {
+		let rates = null
+		comments.forEach( comment => {
+			rates += comment.rate
+		})
+		
+		const result = parseFloat(rates / comments.length).toFixed(1)
+		
+		if (result > 5) {
+			return 5
+		}
+		return result
+	}
+}
 
 function Product () {
 	
@@ -154,26 +173,7 @@ function Product () {
 			</div>
 			<Row>
 				<Col md={12} lg={5}>
-					<div className='product-image'>
-						<img className='img-fluid active' src='/Images/Products/MIS Monitor.jpg' alt='h'/>
-						<div className='product-sub-image w-100'>
-							<div className='border-200 p-1 rounded mx-2 ms-3'>
-								<img className='img-fluid mb-0' src='/Images/Products/MIS Monitor.jpg' alt='h'/>
-							</div>
-							<div className='border-200 p-1 rounded mx-2'>
-								<img className='img-fluid mb-0' src='/Images/Products/MIS Monitor.jpg' alt='h'/>
-							</div>
-							<div className='border-200 p-1 rounded mx-2'>
-								<img className='img-fluid mb-0' src='/Images/Products/MIS Monitor.jpg' alt='h'/>
-							</div>
-							<div className='border-200 p-1 rounded mx-2'>
-								<img className='img-fluid mb-0' src='/Images/Products/MIS Monitor.jpg' alt='h'/>
-							</div>
-							<div className='border-200 p-1 rounded mx-2'>
-								<img className='img-fluid mb-0' src='/Images/Products/MIS Monitor.jpg' alt='h'/>
-							</div>
-						</div>
-					</div>
+					<Image product={currentProduct} />
 				</Col>
 				<Col className='mt-half-5' md={12} lg={7}>
 					<Breadcrumbs aria-label="breadcrumb">
@@ -194,11 +194,12 @@ function Product () {
 						<span>
 							<Star style={ { fontSize: 16, color: '#F9A825' } } fontSize='inherit' color='inherit' />
 						</span>
-						<span className='fw-bold'>3.3 </span>
-						<span className='text-black-50'>(6)</span>
+						{/*<span className='fw-bold'>3.3 </span>*/}
+						<span className='fw-bold'>{ RateSum(currentProduct.comments) } </span>
+						<span className='text-black-50'>({ currentProduct.comments.length })</span>
 						
 						<span className='dotted text-primary fw-bold pointer'>
-							6 Comments
+							{ currentProduct.comments.length } Comments
 						</span>
 						
 						<span className='dotted text-primary fw-bold pointer'>
@@ -206,16 +207,17 @@ function Product () {
 						</span>
 					</div>
 					<Size />
-					<Colors />
-					<Features open={open} setOpen={setOpen} features={currentProduct.features}/>
+					<Colors colors={ currentProduct.colors } />
+					<Features open={open} setOpen={setOpen} features={ currentProduct.features }/>
 				</Col>
 			</Row>
 			<Row>
 				<Options/>
-				<Tabs />
+				<Tabs product={currentProduct} />
 			</Row>
 		</Container>
 	)
 }
 
+export { RateSum }
 export default Product

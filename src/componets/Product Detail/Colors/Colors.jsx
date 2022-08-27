@@ -1,6 +1,6 @@
 import './Colors.css'
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 
 import { Add, Close, DoneOutline, ColorLens, Edit } from '@mui/icons-material'
 import { Alert, Box, Button, FormControlLabel, IconButton, Modal, TextField } from "@mui/material";
@@ -9,13 +9,9 @@ import { Col, Row } from "react-bootstrap";
 import { MaterialUISwitch } from '../../../Utils'
 
 
-function Colors () {
+function Colors (props) {
 	
-	const [colors, setColors] = useState([
-		{ id: 1, name: 'pink', backgroundColor: '#d099c5', isChecked: true },
-		{ id: 2, name: 'black', backgroundColor: '#000', isChecked: false },
-		{ id: 3, name: 'blue', backgroundColor: '#0000ff', isChecked: false },
-	])
+	const [colors, setColors] = useState(props.colors)
 	
 	const [checkedColor, setCheckedColor] = useState('pink')
 	
@@ -61,6 +57,7 @@ function Colors () {
 					const newColor = { name: name, backgroundColor: color, isChecked: false }
 					setColors(prevState => [...prevState, newColor])
 				} else {
+					// eslint-disable-next-line array-callback-return
 					colors.some( item => {
 						if (item.id === ID ) {
 							item.name = name
@@ -100,33 +97,40 @@ function Colors () {
 						Color: {checkedColor}
 					</h5>
 				</div>
-				<div className='d-flex flex-wrap'>
-					{
-						colors.map( item => (
-							<div key={item.name} className='d-flex'>
-								<Edit className='position-absolute pointer' color={'secondary'} onClick={ event => {
-									let elem = event.currentTarget.parentElement.lastChild
-									
-									let currentColor = colors.find( color => {
-										return color.name === elem.title
-									})
-									setID(currentColor.id)
-									setName(currentColor.name)
-									setColor(convertColor(elem.firstChild.style.backgroundColor))
-									handleOpen()
-								} } fontSize='small' />
-								
-								<div className={`color-border pointer ${ item.isChecked && 'color-border-checked'}`} title={item.name} onClick={ChangeColor} >
-									<div className='color d-flex justify-content-center align-items-center' style={ { backgroundColor: item.backgroundColor } }>
-										{
-											item.isChecked && <DoneOutline className='color-checked' fontSize={'small'} />
-										}
-									</div>
-								</div>
+				{
+					// eslint-disable-next-line react-hooks/rules-of-hooks
+					useMemo(() => {
+						return (
+							<div className='d-flex flex-wrap'>
+								{
+									colors.map( item => (
+										<div key={item.name} className='d-flex'>
+											<Edit className='position-absolute pointer' color={'secondary'} onClick={ event => {
+												let elem = event.currentTarget.parentElement.lastChild
+												
+												let currentColor = colors.find( color => {
+													return color.name === elem.title
+												})
+												setID(currentColor.id)
+												setName(currentColor.name)
+												setColor(convertColor(elem.firstChild.style.backgroundColor))
+												handleOpen()
+											} } fontSize='small' />
+											
+											<div className={`color-border pointer ${ item.isChecked && 'color-border-checked'}`} title={item.name} onClick={ChangeColor} >
+												<div className='color d-flex justify-content-center align-items-center' style={ { backgroundColor: item.backgroundColor } }>
+													{
+														item.isChecked && <DoneOutline className='color-checked' fontSize={'small'} />
+													}
+												</div>
+											</div>
+										</div>
+									))
+								}
 							</div>
-						))
-					}
-				</div>
+						)
+					}, [colors])
+				}
 				<Button className='ms-1' startIcon={<Add />} onClick={ () =>
 				{
 					setIsNewColor(true)

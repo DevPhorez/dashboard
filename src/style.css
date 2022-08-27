@@ -20,6 +20,10 @@ a:hover {
     color: #4f5665 !important;
 }
 
+.bg-success {
+    background-color: #51bfa0 !important;
+}
+
 .text-justify {
     text-align: justify !important;
 }
@@ -50,7 +54,7 @@ a:hover {
     cursor: pointer !important;
 }
 
-.profile-half-circle {
+.half-circle {
     width: 75px;
     height: 75px;
     background-color: #fff0f1;

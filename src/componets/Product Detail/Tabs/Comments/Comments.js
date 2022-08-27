@@ -11,6 +11,8 @@ import { Close, Sort, ThumbUpOffAlt, ThumbDownOffAlt, Add, HorizontalRule, Delet
 
 import { Link } from 'react-router-dom'
 
+import { RateSum } from '../../../../Pages/Product/Product'
+
 const labels: { [index: string]: string } = {
 	1: 'Useless',
 	2: 'Poor',
@@ -106,29 +108,16 @@ function Comments (props) {
 		handleClose()
 	}
 	
-	function RateSum (comments) {
-		if (comments.length === 0) {
-			return 5
-		} else {
-			let rates = null
-			comments.forEach( comment => {
-				rates += comment.rate
-			})
-			
-			return Math.round(rates / comments.length)
-		}
-	}
-	
 	return (
 		<Container>
 			<Row>
 				<Col sm={4}>
 					<div className='mb-4'>
-						<p className='d-inline h3'>4</p>
+						<p className='d-inline h3'>{ Math.round(parseInt(RateSum(props.product.comments))) }</p>
 						<p className='d-inline text-900 fw-bold opacity-50' style={ { fontSize: 12 } }> from 5</p>
 					</div>
 					<div className='d-flex align-items-center'>
-						<Rating name="read-only" value={ RateSum(props.product.comments) } readOnly />
+						<Rating name="read-only" value={ Math.round(RateSum(props.product.comments)) } readOnly />
 						<p className='d-inline-block text-900 fw-bold opacity-50 m-0 mt-1 ms-3' style={ { fontSize: 12 } }>
 							{ props.product.comments.length } Comments
 						</p>
@@ -335,72 +324,80 @@ function Comments (props) {
 						<p className='text-900 pointer'>the most Helpful</p>
 						<p className='text-900 pointer'>Customers Comment</p>
 					</div>
-					<div className='comments'>
-						{ props.product.comments.length > 0 ? (
-							<>
-								{
-									props.product.comments.map( comment => (
+					{
+						React.useMemo(() => {
+							return (
+								<div className='comments'>
+									{ props.product.comments.length > 0 ? (
 										<>
-											<div key={comment.id} className='comment mt-5'>
-												<p className='d-flex align-self-center h5'>
-													<Badge className={`me-3 bg-rating-${comment.rate}`}>{ comment.rate }.0</Badge>{ comment.title }
-												</p>
-												<div className='pt-2 ps-5'>
-													<div className='border-bottom pb-3' style={ { fontSize: 12, marginBottom: '34px' } }>
-												<span className='text-black-50 opacity-75 fw-bold'>
-													{ comment.isAnonymous ? ('Phorez\'s customer') : (comment.owner) }
-												</span>
-														<span className='dotted text-black-50 opacity-75 fw-bold'>
-													{ comment.date }
-												</span>
-													</div>
-													<p className='text-900 mb-3 px-1 pb-2'>{ comment.description }</p>
-													{
-														comment.positivePoints.map( item => (
-															<div key={item[0]} className='d-flex my-2'>
-																<Add color={'secondary'} />
-																<p className='m-0'>{item[1]}</p>
+											{
+												props.product.comments.map( (comment, index) => (
+													<>
+														<div key={comment.id} className='comment mt-5'>
+															<p className='d-flex align-self-center h5'>
+																<Badge className={`me-3 bg-rating-${comment.rate}`}>{ comment.rate }.0</Badge>{ comment.title }
+															</p>
+															<div className='pt-2 ps-5'>
+																<div className='border-bottom pb-3' style={ { fontSize: 12, marginBottom: '34px' } }>
+													<span className='text-black-50 opacity-75 fw-bold'>
+														{ comment.isAnonymous ? ('Phorez\'s customer') : (comment.owner) }
+													</span>
+																	<span className='dotted text-black-50 opacity-75 fw-bold'>
+														{ comment.date }
+													</span>
+																</div>
+																<p className='text-900 mb-3 px-1 pb-2'>{ comment.description }</p>
+																{
+																	comment.positivePoints.map( item => (
+																		<div key={item[0]} className='d-flex my-2'>
+																			<Add color={'secondary'} />
+																			<p className='m-0'>{item[1]}</p>
+																		</div>
+																	))
+																}
+																{
+																	comment.negativePoints.map( item => (
+																		<div key={item[0]} className='d-flex my-2'>
+																			<HorizontalRule color={'error'} />
+																			<p className='m-0'>{item[1]}</p>
+																		</div>
+																	))
+																}
+																<hr className='text-black-50 opacity-25'/>
 															</div>
-														))
-													}
-													{
-														comment.negativePoints.map( item => (
-															<div key={item[0]} className='d-flex my-2'>
-																<HorizontalRule color={'error'} />
-																<p className='m-0'>{item[1]}</p>
+															<div className='d-flex justify-content-end align-items-center text-900 opacity-75 mt-4'>
+																<p className='mb-0 me-3' style={ { fontSize: '14px' } }>
+																	Was this comment helpful ?
+																</p>
+																<IconButton color={'success'}>
+																	<div className='d-flex align-items-center pointer'>
+																		<ThumbUpOffAlt color={'success'} />
+																		<p style={ { fontSize: '12px', color: '#2e7d32' } }>3</p>
+																	</div>
+																</IconButton>
+																<IconButton color={'error'}>
+																	<div className='d-flex align-items-center pointer'>
+																		<p className='text-danger' style={ { fontSize: '12px' } }>3</p>
+																		<ThumbDownOffAlt color={'error'} />
+																	</div>
+																</IconButton>
 															</div>
-														))
-													}
-													<hr className='text-black-50 opacity-25'/>
-												</div>
-												<div className='d-flex justify-content-end align-items-center text-900 opacity-75 mt-4'>
-													<p className='mb-0 me-3' style={ { fontSize: '14px' } }>
-														Was this comment helpful ?
-													</p>
-													<IconButton color={'success'}>
-														<div className='d-flex align-items-center pointer'>
-															<ThumbUpOffAlt color={'success'} />
-															<p style={ { fontSize: '12px', color: '#2e7d32' } }>3</p>
 														</div>
-													</IconButton>
-													<IconButton color={'error'}>
-														<div className='d-flex align-items-center pointer'>
-															<p className='text-danger' style={ { fontSize: '12px' } }>3</p>
-															<ThumbDownOffAlt color={'error'} />
-														</div>
-													</IconButton>
-												</div>
-											</div>
-											<hr/>
+														{
+															index + 1 !== props.product.comments.length && <hr/>
+														}
+													</>
+												))
+											}
 										</>
-									))
-								}
-							</>
-						) : (
-							<p className='text-center text-black-50' style={ { marginTop: '10rem' } }>No comment yet :( <br/> Be first :)</p>
-						)
-						}
-					</div>
+									) : (
+										<p className='text-center text-black-50' style={ { marginTop: '10rem' } }>No comment yet :( <br/> Be first :)</p>
+									)
+									}
+								</div>
+							)
+						}, [props.product.comments])
+					}
 				</Col>
 			</Row>
 		</Container>

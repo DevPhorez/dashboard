@@ -108,7 +108,7 @@ function User () {
 				<div className='d-flex justify-content-center w-100 mt-5 mb-5'>
 					<div className='position-relative overflow-hidden' style={ { borderRadius: '10px' } } onMouseOver={ ShowSetNewProfile } onMouseLeave={ HideSetNewProfile } >
 						<Image className='profile' src={'/' + currentUser.avatar} alt={currentUser.username} />
-						<div className='profile-half-circle' style={ quarterCircleStyles } >
+						<div className='half-circle' style={ quarterCircleStyles } >
 							<IconButton className='position-absolute text-primary' style={ { left: 35, top: 10 } } color={'inherit'} onClick={ShowSlider} >
 								<Face />
 							</IconButton>
