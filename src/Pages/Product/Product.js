@@ -1,6 +1,6 @@
 import './Product.css'
 
-import { useState } from 'react';
+import { useEffect, useState, useF } from 'react';
 import { useParams } from "react-router-dom";
 
 import { Container, Row, Col } from 'react-bootstrap'
@@ -38,7 +38,11 @@ import Colors from '../../componets/Product Detail/Colors/Colors'
 import Size from '../../componets/Product Detail/Size/Size'
 import Tabs from '../../componets/Product Detail/Tabs/Tabs'
 
+import Slider from '../../componets/Products Slider/Slider'
+
 import { products } from '../../data'
+
+import { Helmet } from "react-helmet";
 
 function RateSum (comments) {
 	if (comments.length === 0) {
@@ -59,10 +63,9 @@ function RateSum (comments) {
 }
 
 function Product () {
-	
 	const params = useParams()
 	
-	const [currentProduct] = useState(products.find( product => product.id === +params.productID ))
+	const [currentProduct, setCurrentProduct] = useState(products.find( product => product.id === +params.productID ))
 	
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
@@ -76,12 +79,20 @@ function Product () {
 		}, 5000 )
 	}
 	
+	useEffect(() => {
+		window.scrollTo(0, 0)
+		setCurrentProduct(products.find( product => product.id === +params.productID ))
+	}, )
+	
 	return (
 		<Container className='mt-4'>
+			<Helmet>
+				<title>Phorez | { currentProduct.title }</title>
+			</Helmet>
 			<Alert severity={'info'}>Double click to update values</Alert>
 			<div className='topbar position-relative d-flex mt-3'>
 				<h2>
-					MIS Monitor
+					{ currentProduct.title }
 				</h2>
 				<PopupState variant="popover" popupId="demo-popup-popover">
 					{(popupState) => (
@@ -214,6 +225,9 @@ function Product () {
 			<Row>
 				<Options/>
 				<Tabs product={currentProduct} />
+			</Row>
+			<Row>
+				<Slider products={products} />
 			</Row>
 		</Container>
 	)

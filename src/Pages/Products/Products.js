@@ -10,6 +10,9 @@ import { products } from '../../data'
 
 import Modal from '../../componets/Modal/Modal'
 
+import { Helmet } from "react-helmet";
+
+
 function Products () {
 	
 	const [productData, setProductData] = useState(products)
@@ -90,6 +93,9 @@ function Products () {
 	
 	return (
 		<div className='float-end mt-5 ps-3 pe-4' style={ { height: 400, width: screenWidth >= 768 ? screenWidth - 212.828 : '100%' } }>
+			<Helmet>
+				<title>Phorez | Products</title>
+			</Helmet>
 			<DataGrid
 				rows={productData}
 				columns={columns}

@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import { Box, Paper } from '@mui/material'
-import { AttachMoneyOutlined, ArrowUpward, ArrowDownward } from '@mui/icons-material'
+import { Paper } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import { Container, Row, Col } from 'react-bootstrap'
 
@@ -8,6 +7,7 @@ import HomeBox from '../../componets/Box/Box'
 import Chart from '../../componets/Chart/Chart'
 import Members from '../../componets/Members/Members';
 import TransActions from '../../componets/Trans Actions/TransActions';
+import { Helmet } from "react-helmet";
 
 const Item = styled(Paper)(({ theme }) => ({
 	...theme.typography.body2,
@@ -26,6 +26,9 @@ function Home () {
 	
 	return (
 		<Container fluid>
+			<Helmet>
+				<title>Phorez | Dashboard</title>
+			</Helmet>
 			<Row className='d-flex justify-content-end overflow-hidden'>
 				<Col className='overflow-hidden px-3' sm={10}>
 					<Row>

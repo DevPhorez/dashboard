@@ -11,6 +11,7 @@ import Slider from '../../componets/Profile Slider/Slider';
 import { Face, SystemUpdateAlt } from '@mui/icons-material';
 
 import { userRows as users } from "../../data";
+import {Helmet} from "react-helmet";
 
 function User () {
 	
@@ -100,6 +101,9 @@ function User () {
 	return (
 		<>
 			<Container className='float-end ps-3 pe-4' style={ { width: screenWidth >= 768 ? screenWidth - 212.828 : '100%' } }>
+				<Helmet>
+					<title>Phorez | { currentUser.username }</title>
+				</Helmet>
 				<div className='mt-3'>
 					{
 						showError && <Alert severity={alertMessage.status} onClose={ () => setShowError(false) } >{ alertMessage.message }</Alert>

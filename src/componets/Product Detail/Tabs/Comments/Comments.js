@@ -384,7 +384,7 @@ function Comments (props) {
 															</div>
 														</div>
 														{
-															index + 1 !== props.product.comments.length && <hr/>
+															index + 1 !== props.product.comments.length && <hr />
 														}
 													</>
 												))
