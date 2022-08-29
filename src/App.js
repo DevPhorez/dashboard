@@ -4,9 +4,9 @@ import NavBar from './componets/NavBar/NavBar'
 import routes from './routes'
 import { useRoutes } from 'react-router-dom'
 
-
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
+const { palette } = createTheme();
 const theme = createTheme({
 	palette: {
 		secondary: {
@@ -14,9 +14,11 @@ const theme = createTheme({
 		},
 		primary: {
 			main: '#d099c5'
-		}
+		},
 	}
 });
+
+
 
 function App() {
 	
