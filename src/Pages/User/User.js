@@ -100,7 +100,7 @@ function User () {
 	
 	return (
 		<>
-			<Container className='float-end ps-3 pe-4' style={ { width: screenWidth >= 768 ? screenWidth - 212.828 : '100%' } }>
+			<Container className='position-absolute end-0 ps-3 pe-4' style={ { width: screenWidth >= 768 ? screenWidth - 212.828 : '100%' } }>
 				<Helmet>
 					<title>Phorez | { currentUser.username }</title>
 				</Helmet>
