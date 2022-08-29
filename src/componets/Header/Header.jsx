@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
-import { IconButton } from '@mui/material'
+import { IconButton, LinearProgress } from '@mui/material'
 import { Language } from '@mui/icons-material';
 
 import { Container, Navbar, Nav } from 'react-bootstrap'
@@ -11,6 +11,33 @@ import Notification from "./Norification/Notification";
 
 function Header () {
 	
+	const [progress, setProgress] = useState(0);
+	const [buffer, setBuffer] = useState(10);
+	
+	const progressRef = useRef(() => {});
+	useEffect(() => {
+		progressRef.current = () => {
+			if (progress > 100) {
+				setProgress(0);
+				setBuffer(10);
+			} else {
+				const diff = Math.random() * 10;
+				const diff2 = Math.random() * 10;
+				setProgress(progress + diff);
+				setBuffer(progress + diff + diff2);
+			}
+		};
+	}, )
+	
+	useEffect(() => {
+		const timer = setInterval(() => {
+			progressRef.current();
+		}, 500);
+		
+		return () => {
+			clearInterval(timer);
+		};
+	}, []);
 	return (
 		<>
 			<div style={ { width: '100%', height: '46px', padding: '8px 0', marginBottom: 16 } }></div>
@@ -33,6 +60,9 @@ function Header () {
 					</Navbar.Collapse>
 				</Container>
 			</Navbar>
+			
+			<LinearProgress color={'secondary'} variant="buffer" value={progress} valueBuffer={buffer} />
+			
 		</>
 	)
 }

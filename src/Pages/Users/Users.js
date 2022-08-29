@@ -89,7 +89,7 @@ function Users () {
 	const screenWidth = document.body.offsetWidth
 	
 	return (
-		<div className='float-end mt-5 ps-3 pe-4' style={ { height: 400, width: screenWidth >= 768 ? screenWidth - 212.828 : '100%' } }>
+		<div className='position-absolute end-0 mt-5 ps-3 pe-4' style={ { height: 400, width: screenWidth >= 768 ? screenWidth - 212.828 : '100%' } }>
 			<DataGrid
 				rows={userData}
 				columns={columns}

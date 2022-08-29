@@ -85,7 +85,7 @@ function Product () {
 	}, )
 	
 	return (
-		<Container className='mt-4'>
+		<Container className='position-absolute end-0 mt-4'>
 			<Helmet>
 				<title>Phorez | { currentProduct.title }</title>
 			</Helmet>
